@@ -1,4 +1,8 @@
-﻿# 🌿 TrackTrash — Plataforma B2B de Logística de Resíduos Eletrônicos
+﻿<div align="center">
+  <img src="public/assets/logo-tracktrash.jpg" alt="TrackTrash - Logística Reversa Inteligente" width="500"/>
+  <br/><br/>
+</div>
+# 🌿 TrackTrash — Plataforma B2B de Logística de Resíduos Eletrônicos
 
 > MVP desenvolvido para competição de Hackathon de Sustentabilidade
 
@@ -128,3 +132,4 @@ Projeto desenvolvido para o **Hackathon de Sustentabilidade 2026**.
 ---
 
 *TrackTrash — Transformando e-waste em responsabilidade ESG* ♻️
+
