@@ -13,7 +13,7 @@
 
 ## 🚀 Demo ao Vivo
 
-**[https://tracktrash-pitch.vercel.app/](https://tracktrash-pitch.vercel.app/)**
+**[https://tracktrash-pitch.vercel.app/](https://manus.im/share/file/99471a60-f13f-45b7-b593-f0b20a7fd61a)**
 
 | Perfil | Email de Acesso | Senha |
 |--------|-----------------|-------|
