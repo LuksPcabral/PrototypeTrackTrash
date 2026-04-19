@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>TrackTrash — Documentação Estratégica</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --neon:#059669;--neon-l:#10b981;--dark:#0f172a;--mid:#1e293b;
+  --bg:#f0f4f8;--card:rgba(255,255,255,0.92);--border:rgba(0,0,0,0.07);
+  --muted:#64748b;--text:#1e293b;--red:#ef4444;--blue:#3b82f6;--amber:#f59e0b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);
+  background-image:radial-gradient(ellipse at 10% 60%,rgba(5,150,105,.06),transparent 40%),
+                   radial-gradient(ellipse at 90% 10%,rgba(2,132,199,.06),transparent 40%);
+  color:var(--text);min-height:100vh}
+nav{position:sticky;top:0;z-index:100;background:var(--dark);
+  border-bottom:2px solid var(--neon);display:flex;align-items:center;
+  justify-content:space-between;padding:0 32px;height:58px;
+  box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.nav-logo{color:#fff;font-size:1rem;font-weight:900;letter-spacing:-.03em}
+.nav-logo span{color:var(--neon-l)}
+.nav-pills{display:flex;gap:4px;flex-wrap:wrap}
+.pill{padding:5px 12px;border-radius:6px;font-size:.72rem;font-weight:700;
+  cursor:pointer;border:none;background:transparent;color:#64748b;
+  text-transform:uppercase;letter-spacing:.06em;transition:all .2s}
+.pill:hover,.pill.active{background:rgba(5,150,105,.18);color:var(--neon-l)}
+.hero{background:var(--dark);padding:48px 40px 40px;
+  border-bottom:2px solid rgba(5,150,105,.25)}
+.hero-tag{display:inline-block;background:var(--neon);color:#fff;
+  font-size:.62rem;font-weight:900;padding:3px 10px;border-radius:20px;
+  text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+.hero h1{font-size:2.2rem;font-weight:900;color:#fff;letter-spacing:-.05em;line-height:1.1}
+.hero h1 span{color:var(--neon-l)}
+.hero-sub{color:#94a3b8;font-size:.95rem;margin-top:10px;max-width:600px;line-height:1.6}
+.section{display:none;padding:40px;max-width:1100px;margin:0 auto}
+.section.active{display:block}
+.sec-header{margin-bottom:28px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.sec-num{display:inline-flex;align-items:center;gap:8px;
+  background:var(--neon);color:#fff;font-size:.65rem;font-weight:900;
+  padding:4px 12px;border-radius:20px;text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:10px}
+.sec-title{font-size:1.7rem;font-weight:900;color:var(--dark);letter-spacing:-.04em}
+.sec-sub{color:var(--muted);font-size:.9rem;margin-top:6px;line-height:1.6}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);padding:24px 28px;margin-bottom:20px;
+  border-bottom:2px solid rgba(5,150,105,.18)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.metric-card{background:var(--card);border:1px solid var(--border);
+  border-radius:14px;padding:20px;text-align:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.06);border-top:3px solid var(--neon)}
+.metric-val{font-size:2rem;font-weight:900;color:var(--dark);line-height:1}
+.metric-sub{font-size:.72rem;color:var(--muted);font-weight:600;
+  text-transform:uppercase;letter-spacing:.06em;margin-top:5px}
+.feature{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start}
+.feat-icon{width:38px;height:38px;border-radius:10px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.feat-icon.g{background:#dcfce7}.feat-icon.b{background:#dbeafe}
+.feat-icon.o{background:#fff7ed}.feat-icon.p{background:#f3e8ff}
+.feat-icon.r{background:#fee2e2}.feat-icon.d{background:#f1f5f9}
+.feat-text strong{display:block;font-size:.82rem;font-weight:800;color:var(--dark);margin-bottom:2px}
+.feat-text p{font-size:.78rem;color:var(--muted);line-height:1.55}
+.comp-table{width:100%;border-collapse:collapse;font-size:.78rem}
+.comp-table th{background:var(--dark);color:#fff;padding:10px 14px;
+  text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.07em}
+.comp-table th:first-child{border-radius:10px 0 0 0}
+.comp-table th:last-child{border-radius:0 10px 0 0}
+.comp-table td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text)}
+.comp-table tr:hover td{background:rgba(5,150,105,.03)}
+.comp-table .tt-row td{background:rgba(5,150,105,.06);font-weight:700}
+.comp-table .tt-row td:first-child{border-left:3px solid var(--neon)}
+.check{color:var(--neon);font-weight:900}.cross{color:var(--red)}.partial{color:var(--amber)}
+.impact-bar-wrap{margin-bottom:14px}
+.impact-bar-label{display:flex;justify-content:space-between;
+  font-size:.75rem;font-weight:700;margin-bottom:6px}
+.impact-bar-track{height:10px;background:#e2e8f0;border-radius:10px;overflow:hidden}
+.impact-bar-fill{height:100%;border-radius:10px;
+  background:linear-gradient(90deg,var(--neon),var(--neon-l))}
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:9px;top:0;bottom:0;
+  width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-dot{position:absolute;left:-24px;top:3px;width:12px;height:12px;
+  border-radius:50%;border:2px solid var(--neon);background:white}
+.tl-dot.filled{background:var(--neon)}
+.tl-phase{font-size:.62rem;font-weight:700;color:var(--neon);
+  text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.tl-title{font-size:.82rem;font-weight:800;color:var(--dark)}
+.tl-desc{font-size:.75rem;color:var(--muted);margin-top:3px;line-height:1.5}
+.pillar{background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:20px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+.pillar-icon{font-size:1.6rem;margin-bottom:8px}
+.pillar-title{font-size:.8rem;font-weight:800;color:var(--dark);margin-bottom:6px}
+.pillar-desc{font-size:.75rem;color:var(--muted);line-height:1.6}
+.pillar.green{border-top:3px solid var(--neon)}
+.pillar.blue{border-top:3px solid var(--blue)}
+.pillar.amber{border-top:3px solid var(--amber)}
+.pillar.purple{border-top:3px solid #a855f7}
+.usp{background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:22px;box-shadow:0 4px 14px rgba(0,0,0,.05);border-left:4px solid var(--neon)}
+.usp-num{font-size:2rem;font-weight:900;color:var(--neon);opacity:.25;line-height:1}
+.usp-title{font-size:.88rem;font-weight:800;color:var(--dark);margin-top:-6px}
+.usp-desc{font-size:.75rem;color:var(--muted);margin-top:6px;line-height:1.6}
+.callout{border-radius:12px;padding:16px 20px;margin-bottom:16px;
+  display:flex;gap:12px;align-items:flex-start;font-size:.8rem}
+.callout.info{background:#eff6ff;border:1px solid #bfdbfe}
+.callout.warn{background:#fff7ed;border:1px solid #fed7aa}
+.callout.success{background:#f0fdf4;border:1px solid #bbf7d0}
+.callout-icon{font-size:1.1rem;flex-shrink:0}
+.callout-text strong{display:block;font-weight:800;color:var(--dark);margin-bottom:2px}
+.callout-text p{color:var(--muted);line-height:1.5}
+@media(max-width:700px){
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .section{padding:20px}.hero{padding:28px 20px}
+  nav{padding:0 16px}.hero h1{font-size:1.5rem}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Track<span>Trash</span> <span style="color:#475569;font-weight:400">/ Docs</span></div>
+  <div class="nav-pills">
+    <button class="pill active" onclick="show('viab',this)">Viabilidade</button>
+    <button class="pill" onclick="show('comp',this)">Mercado</button>
+    <button class="pill" onclick="show('diferenciais',this)">Diferenciais</button>
+    <button class="pill" onclick="show('impacto',this)">Impactos</button>
+  </div>
+</nav>
+<div class="hero">
+  <div class="hero-tag">📄 Documentação Estratégica</div>
+  <h1>Track<span>Trash</span> — Proposta de Valor</h1>
+  <p class="hero-sub">Plataforma B2B de gestão inteligente de resíduos eletrônicos com rastreamento por satélite, certificação ESG e otimização logística por IA.</p>
+</div>
+
+<!-- 1. VIABILIDADE -->
+<section class="section active" id="viab">
+  <div class="sec-header">
+    <div class="sec-num">01 · Viabilidade</div>
+    <h2 class="sec-title">Viabilidade da Solução</h2>
+    <p class="sec-sub">Defesa da proposta sobre recursos técnicos, humanos e financeiros necessários para implementar o TrackTrash em escala.</p>
+  </div>
+  <div class="grid-4" style="margin-bottom:20px">
+    <div class="pillar green"><div class="pillar-icon">⚙️</div><div class="pillar-title">Técnica</div><div class="pillar-desc">Stack 100% open-source e cloud-native. Sem dependências proprietárias ou licenças de alto custo.</div></div>
+    <div class="pillar blue"><div class="pillar-icon">👥</div><div class="pillar-title">Humana</div><div class="pillar-desc">Time inicial de 3–5 pessoas (1 dev, 1 designer, 1 ops/logística) já é suficiente para a fase MVP.</div></div>
+    <div class="pillar amber"><div class="pillar-icon">💰</div><div class="pillar-title">Financeira</div><div class="pillar-desc">Modelo SaaS B2B com custo de hospedagem inicial abaixo de R$500/mês para os 50 primeiros clientes.</div></div>
+    <div class="pillar purple"><div class="pillar-icon">📋</div><div class="pillar-title">Regulatória</div><div class="pillar-desc">Alinhado à PNRS (Lei 12.305/10) e LGPD. Certificado ESG como vantagem de compliance automático.</div></div>
+  </div>
+  <div class="card">
+    <div style="font-size:.85rem;font-weight:800;color:var(--dark);margin-bottom:16px;">🛠️ Viabilidade Técnica — Stack Atual vs. Produção</div>
+    <div class="grid-2">
+      <div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--neon);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">MVP Hackathon (hoje)</div>
+        <div class="feature"><div class="feat-icon g">⚛️</div><div class="feat-text"><strong>React 18 + Vite</strong><p>Front-end de alta performance com build em menos de 10s.</p></div></div>
+        <div class="feature"><div class="feat-icon g">🗺️</div><div class="feat-text"><strong>Leaflet + OpenStreetMap</strong><p>Mapa de rastreamento 100% gratuito, sem limite de requisições.</p></div></div>
+        <div class="feature"><div class="feat-icon g">☁️</div><div class="feat-text"><strong>Vercel (Hosting)</strong><p>Deploy em segundos, CDN global, HTTPS automático. Free tier suporta MVP.</p></div></div>
+      </div>
+      <div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Escala Pós-Hackathon</div>
+        <div class="feature"><div class="feat-icon b">🗄️</div><div class="feat-text"><strong>Supabase (PostgreSQL)</strong><p>Banco de dados real com autenticação, RLS e realtime. Gratuito até 500MB.</p></div></div>
+        <div class="feature"><div class="feat-icon b">🤖</div><div class="feat-text"><strong>Gemini API</strong><p>IA para otimização de rotas, predição de volume e detecção de anomalias.</p></div></div>
+        <div class="feature"><div class="feat-icon b">📱</div><div class="feat-text"><strong>React Native (App Motorista)</strong><p>App para o caminhoneiro confirmar coletas e atualizar status em campo.</p></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div style="font-size:.85rem;font-weight:800;color:var(--dark);margin-bottom:16px;">👥 Equipe Mínima Viável</div>
+    <div class="grid-3">
+      <div class="feature" style="background:#f8fafc;border-radius:10px;padding:14px;margin:0"><div class="feat-icon g">💻</div><div class="feat-text"><strong>1× Dev Full-Stack</strong><p>React, Node.js, banco de dados. Salário médio: R$6k–12k/mês.</p></div></div>
+      <div class="feature" style="background:#f8fafc;border-radius:10px;padding:14px;margin:0"><div class="feat-icon b">🎨</div><div class="feat-text"><strong>1× Designer UX/UI</strong><p>Prototipagem B2B. Pode ser freelancer nos primeiros 6 meses.</p></div></div>
+      <div class="feature" style="background:#f8fafc;border-radius:10px;padding:14px;margin:0"><div class="feat-icon o">🚛</div><div class="feat-text"><strong>1× Coordenador Logístico</strong><p>Parceria com cooperativas existentes. Sem frota própria.</p></div></div>
+    </div>
+    <div class="callout success" style="margin-top:14px"><div class="callout-icon">✅</div><div class="callout-text"><strong>Modelo Asset-Light</strong><p>O TrackTrash NÃO precisa ter caminhões próprios. Opera como marketplace logístico, conectando empresas a transportadoras parceiras já existentes (reduzindo capex inicial em 80%).</p></div></div>
+  </div>
+  <div class="card">
+    <div style="font-size:.85rem;font-weight:800;color:var(--dark);margin-bottom:16px;">🗓️ Roadmap de Implementação</div>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot filled"></div><div class="tl-phase">Fase 1 — Mês 1–2</div><div class="tl-title">MVP Lançado ✓ (Hoje)</div><div class="tl-desc">Portal lojista, SAT-INTEL, geração de certificado ESG, deploy na Vercel.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-phase">Fase 2 — Mês 3–4</div><div class="tl-title">Backend Real + Primeiros 10 Clientes</div><div class="tl-desc">Integração Supabase, autenticação por CNPJ, app do motorista, parceria com 2 cooperativas.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-phase">Fase 3 — Mês 5–8</div><div class="tl-title">Escala Regional (São Paulo)</div><div class="tl-desc">50 empresas ativas, otimização de rotas por IA, relatórios ESG automatizados.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-phase">Fase 4 — Ano 2</div><div class="tl-title">Expansão Nacional + Monetização</div><div class="tl-desc">200+ empresas, marketplace de materiais reaproveitáveis, integração ERP corporativo.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. MERCADO -->
+<section class="section" id="comp">
+  <div class="sec-header">
+    <div class="sec-num">02 · Mercado</div>
+    <h2 class="sec-title">Soluções Similares no Mercado</h2>
+    <p class="sec-sub">Análise competitiva: soluções existentes que serviram de referência e benchmark para o TrackTrash.</p>
+  </div>
+  <div class="callout info" style="margin-bottom:20px"><div class="callout-icon">📌</div><div class="callout-text"><strong>Contexto de Mercado</strong><p>O mercado global de gerenciamento de e-waste foi avaliado em US$ 49,4 bilhões em 2023 e deve crescer 13,8% ao ano até 2030. No Brasil, apenas 3% dos resíduos eletrônicos são descartados corretamente, revelando uma oportunidade gigantesca.</p></div></div>
+  <div class="card">
+    <div style="font-size:.85rem;font-weight:800;color:var(--dark);margin-bottom:16px;">🏁 Matriz Competitiva</div>
+    <div style="overflow-x:auto">
+      <table class="comp-table">
+        <thead><tr><th>Solução</th><th>Foco</th><th>Portal B2B</th><th>Mapa Real-Time</th><th>Cert. ESG</th><th>Acessível PME</th><th>Brasil</th></tr></thead>
+        <tbody>
+          <tr class="tt-row"><td>🌿 <strong>TrackTrash</strong></td><td>E-waste logística B2B</td><td class="check">✅ Sim</td><td class="check">✅ Sim</td><td class="check">✅ Sim</td><td class="check">✅ Sim</td><td class="check">✅ Sim</td></tr>
+          <tr><td>♻️ Cataki</td><td>Catadores B2C</td><td class="cross">❌ Não</td><td class="partial">⚠️ Parcial</td><td class="cross">❌ Não</td><td class="check">✅ Sim</td><td class="check">✅ Sim</td></tr>
+          <tr><td>🏭 Descarte Certo</td><td>Pontos de coleta</td><td class="cross">❌ Não</td><td class="cross">❌ Não</td><td class="partial">⚠️ Manual</td><td class="check">✅ Sim</td><td class="check">✅ Sim</td></tr>
+          <tr><td>🌐 Rubicon (EUA)</td><td>Gestão resíduos B2B</td><td class="check">✅ Sim</td><td class="check">✅ Sim</td><td class="partial">⚠️ Parcial</td><td class="cross">❌ Não</td><td class="cross">❌ Não</td></tr>
+          <tr><td>📦 Recycle Track Sys.</td><td>Analytics de resíduos</td><td class="check">✅ Sim</td><td class="check">✅ Sim</td><td class="check">✅ Sim</td><td class="cross">❌ Não</td><td class="cross">❌ Não</td></tr>
+          <tr><td>🔵 Manifesto Digital</td><td>Compliance ambiental</td><td class="partial">⚠️ Limitado</td><td class="cross">❌ Não</td><td class="check">✅ Sim</td><td class="cross">❌ Caro</td><td class="check">✅ Sim</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card">
+      <div style="font-size:.85rem;font-weight:800;color:var(--dark);margin-bottom:14px;">🔍 Referências Utilizadas</div>
+      <div class="feature"><div class="feat-icon g">📱</div><div class="feat-text"><strong>Cataki (Brasil)</strong><p>Referência de UX mobile-first. O TrackTrash aprimorou o modelo para foco B2B com portal corporativo e geração automática de documentação ESG.</p></div></div>
+      <div class="feature"><div class="feat-icon b">🌐</div><div class="feat-text"><strong>Rubicon Technologies (EUA)</strong><p>Referência de modelo asset-light (sem frota própria) e dashboard analítico. Adaptamos para PMEs brasileiras.</p></div></div>
+      <div class="feature"><div class="feat-icon o">📊</div><div class="feat-text"><strong>Recycle Track Systems (EUA)</strong><p>Referência para o módulo ESG e rastreamento por material, adaptando para o contexto da PNRS brasileira.</p></div></div>
+    </div>
+    <div class="card">
+      <div style="font-size:.85rem;font-weight:800;color:var(--dark);margin-bottom:14px;">💡 Gap de Mercado Identificado</div>
+      <div class="callout success" style="margin-bottom:12px"><div class="callout-icon">🎯</div><div class="callout-text"><strong>Nicho inexplorado</strong><p>Nenhuma solução brasileira combina rastreamento em tempo real + certificado ESG + portal B2B acessível para PMEs num único produto.</p></div></div>
+      <div class="feature"><div class="feat-icon r">⚠️</div><div class="feat-text"><strong>Soluções Estrangeiras = Inacessíveis</strong><p>Rubicon e RTS são de US$500–2000/mês. PMEs brasileiras não têm acesso a essas tecnologias.</p></div></div>
+      <div class="feature"><div class="feat-icon o">📋</div><div class="feat-text"><strong>Soluções Nacionais = Incompletas</strong><p>Cataki e Descarte Certo focam em B2C, sem portal corporativo, rastreamento ou certificado ESG digital.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. DIFERENCIAIS -->
+<section class="section" id="diferenciais">
+  <div class="sec-header">
+    <div class="sec-num">03 · Diferenciais</div>
+    <h2 class="sec-title">Proposta Única de Valor</h2>
+    <p class="sec-sub">As maiores vantagens competitivas do TrackTrash que nenhum concorrente nacional entrega hoje.</p>
+  </div>
+  <div class="callout info" style="margin-bottom:24px"><div class="callout-icon">⭐</div><div class="callout-text"><strong>Nossa Proposta de Valor em uma frase:</strong><p><em>"O TrackTrash é a única solução brasileira que transforma o descarte de e-waste de uma obrigação legal em vantagem competitiva ESG para PMEs, entregando rastreamento real, certificação automática e logística inteligente num único clique."</em></p></div></div>
+  <div class="grid-2" style="margin-bottom:20px">
+    <div class="usp"><div class="usp-num">01</div><div class="usp-title">🛰️ Rastreamento por Satélite em Tempo Real</div><div class="usp-desc">Módulo SAT-INTEL com mapa interativo (Leaflet/OpenStreetMap) mostrando clientes com coletas pendentes e o caminhão em rota — 100% gratuito. Concorrentes nacionais não oferecem nada parecido.</div></div>
+    <div class="usp"><div class="usp-num">02</div><div class="usp-title">🏆 Certificado ESG Digital Automatizado</div><div class="usp-desc">Ao confirmar a coleta, o sistema gera automaticamente um certificado digital de descarte correto. Comprova conformidade com a PNRS para auditorias e relatórios GRI — sem burocracia manual.</div></div>
+    <div class="usp"><div class="usp-num">03</div><div class="usp-title">🤖 Cérebro Logístico (IA para Rotas)</div><div class="usp-desc">Algoritmo de otimização que agrupa coletas próximas no mesmo trajeto, reduzindo km rodado em até 40% e emissões de CO₂. Calcula o carbono evitado por coleta como "selo de impacto ambiental".</div></div>
+    <div class="usp"><div class="usp-num">04</div><div class="usp-title">🎯 Foco Exclusivo em PMEs (B2B Acessível)</div><div class="usp-desc">Interface de 3 cliques (Cadastrar → Solicitar → Receber Certificado). Enquanto concorrentes cobram US$500+/mês mirando grandes corporações, o TrackTrash é feito para assistências técnicas e lojas.</div></div>
+  </div>
+  <div class="card">
+    <div style="font-size:.85rem;font-weight:800;color:var(--dark);margin-bottom:16px;">🔑 Diferenciais Adicionais</div>
+    <div class="grid-3">
+      <div class="feature"><div class="feat-icon g">♻️</div><div class="feat-text"><strong>Marketplace de Materiais</strong><p>Lojistas monetizam resíduos vendendo materiais reaproveitáveis para indústrias parceiras.</p></div></div>
+      <div class="feature"><div class="feat-icon b">📱</div><div class="feat-text"><strong>Mobile-First Nativo</strong><p>100% responsivo. Solicitação de coleta pelo celular em menos de 60 segundos.</p></div></div>
+      <div class="feature"><div class="feat-icon o">🔒</div><div class="feat-text"><strong>Dual-Role por Design</strong><p>Uma única plataforma com dois painéis: cliente B2B e operador logístico, sem custo de dois sistemas.</p></div></div>
+      <div class="feature"><div class="feat-icon p">📊</div><div class="feat-text"><strong>Relatório ESG Pronto</strong><p>Dados de KG, CO₂ evitado e certificados para uso direto em relatórios de sustentabilidade corporativa.</p></div></div>
+      <div class="feature"><div class="feat-icon d">🌐</div><div class="feat-text"><strong>100% Cloud e Open-Source</strong><p>Zero instalação, zero licença, acesso imediato via link. Funciona em qualquer dispositivo com navegador.</p></div></div>
+      <div class="feature"><div class="feat-icon r">⚖️</div><div class="feat-text"><strong>Compliance PNRS Automático</strong><p>Cada coleta registrada gera automaticamente a documentação exigida pela Lei 12.305/10.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. IMPACTOS -->
+<section class="section" id="impacto">
+  <div class="sec-header">
+    <div class="sec-num">04 · Impactos</div>
+    <h2 class="sec-title">Impactos Possíveis</h2>
+    <p class="sec-sub">Mensuração da importância e do alcance da solução TrackTrash para o público, o meio ambiente e a economia.</p>
+  </div>
+  <div class="grid-4" style="margin-bottom:24px">
+    <div class="metric-card"><div class="metric-val">200+</div><div class="metric-sub">PMEs atendidas<br/>(Meta Ano 1)</div></div>
+    <div class="metric-card" style="border-top-color:var(--blue)"><div class="metric-val" style="color:var(--blue)">60t</div><div class="metric-sub">E-waste gerenciado<br/>por mês</div></div>
+    <div class="metric-card" style="border-top-color:var(--amber)"><div class="metric-val" style="color:var(--amber)">43kg</div><div class="metric-sub">CO₂ evitado<br/>por coleta</div></div>
+    <div class="metric-card" style="border-top-color:#a855f7"><div class="metric-val" style="color:#a855f7">R$0</div><div class="metric-sub">Multas ambientais<br/>para clientes</div></div>
+  </div>
+  <div class="card">
+    <div style="font-size:.85rem;font-weight:800;color:var(--dark);margin-bottom:16px;">🌿 Impacto Ambiental</div>
+    <div class="impact-bar-wrap"><div class="impact-bar-label"><span>Resíduos com destino correto</span><span style="color:var(--neon);font-weight:800">De 3% → 85%</span></div><div class="impact-bar-track"><div class="impact-bar-fill" style="width:85%"></div></div></div>
+    <div class="impact-bar-wrap"><div class="impact-bar-label"><span>Redução de km rodado por rota otimizada</span><span style="color:var(--neon);font-weight:800">–40%</span></div><div class="impact-bar-track"><div class="impact-bar-fill" style="width:40%"></div></div></div>
+    <div class="impact-bar-wrap"><div class="impact-bar-label"><span>Materiais reaproveitados em vez de aterro</span><span style="color:var(--neon);font-weight:800">+72%</span></div><div class="impact-bar-track"><div class="impact-bar-fill" style="width:72%"></div></div></div>
+    <div class="grid-2" style="margin-top:14px;gap:12px">
+      <div class="callout success"><div class="callout-icon">🌍</div><div class="callout-text"><strong>Impacto climático direto</strong><p>O descarte correto de 1 tonelada de placas eletrônicas evita a liberação de até 2,5 toneladas de CO₂ equivalente que ocorreria em aterros convencionais.</p></div></div>
+      <div class="callout success"><div class="callout-icon">💧</div><div class="callout-text"><strong>Proteção de aquíferos</strong><p>Metais pesados de baterias (chumbo, mercúrio, cádmio) contaminam lençóis freáticos. Cada coleta correta impede a contaminação de até 1 milhão de litros de água.</p></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div style="font-size:.85rem;font-weight:800;color:var(--dark);margin-bottom:16px;">👥 Impacto Social e Econômico</div>
+    <div class="grid-3">
+      <div class="feature"><div class="feat-icon g">🏪</div><div class="feat-text"><strong>Proteção Legal das PMEs</strong><p>Empresas sem comprovante de descarte correto podem ser multadas em R$50k–10M pela PNRS. O TrackTrash elimina esse risco automaticamente.</p></div></div>
+      <div class="feature"><div class="feat-icon b">💼</div><div class="feat-text"><strong>Geração de Emprego Verde</strong><p>Cada novo cliente gera demanda por coletores, motoristas e triadores — criando empregos formais na economia verde.</p></div></div>
+      <div class="feature"><div class="feat-icon o">🏆</div><div class="feat-text"><strong>Competitividade ESG</strong><p>PMEs com certificado ESG têm 3× mais chances de fechar contratos com grandes corporações que exigem fornecedores sustentáveis.</p></div></div>
+      <div class="feature"><div class="feat-icon p">💰</div><div class="feat-text"><strong>Monetização de Resíduos</strong><p>Via Marketplace TrackTrash, um lojista pode gerar R$200–2.000/mês com o que antes era lixo descartado.</p></div></div>
+      <div class="feature"><div class="feat-icon d">📱</div><div class="feat-text"><strong>Inclusão Digital</strong><p>Interface pensada para pequenos lojistas, sem necessidade de treinamento. Acessível a qualquer empresa com smartphone.</p></div></div>
+      <div class="feature"><div class="feat-icon r">🏫</div><div class="feat-text"><strong>Educação Ambiental</strong><p>O app educa lojistas a categorizar materiais corretamente. A cada cadastro, exibe o impacto ambiental do item descartado.</p></div></div>
+    </div>
+  </div>
+  <div class="card">
+    <div style="font-size:.85rem;font-weight:800;color:var(--dark);margin-bottom:16px;">📈 Projeção de Alcance (3 anos)</div>
+    <div class="grid-3">
+      <div style="text-align:center;padding:16px;background:#f8fafc;border-radius:12px;border:1px solid var(--border)"><div style="font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">Ano 1</div><div style="font-size:1.8rem;font-weight:900;color:var(--neon)">200</div><div style="font-size:.72rem;color:var(--muted)">empresas ativas<br/>São Paulo capital</div></div>
+      <div style="text-align:center;padding:16px;background:#f8fafc;border-radius:12px;border:1px solid var(--border)"><div style="font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">Ano 2</div><div style="font-size:1.8rem;font-weight:900;color:var(--blue)">2.000</div><div style="font-size:.72rem;color:var(--muted)">empresas ativas<br/>Estado de SP</div></div>
+      <div style="text-align:center;padding:16px;background:#f8fafc;border-radius:12px;border:1px solid var(--border)"><div style="font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">Ano 3</div><div style="font-size:1.8rem;font-weight:900;color:#a855f7">10.000</div><div style="font-size:.72rem;color:var(--muted)">empresas ativas<br/>Brasil nacional</div></div>
+    </div>
+    <div class="callout warn" style="margin-top:14px"><div class="callout-icon">📊</div><div class="callout-text"><strong>Mercado Endereçável (TAM)</strong><p>Existem 1,3 milhão de PMEs de tecnologia e eletrônicos no Brasil (IBGE). Com ticket médio de R$150/mês por empresa, o TAM do TrackTrash é de <strong>R$195 milhões/mês</strong>.</p></div></div>
+  </div>
+</section>
+
+<script>
+function show(id,el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
