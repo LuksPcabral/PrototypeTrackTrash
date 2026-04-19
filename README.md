@@ -1,5 +1,5 @@
 ﻿<div align="center">
-  <img src="public/assets/logo-tracktrash.png" alt="TrackTrash - Logística Reversa Inteligente" width="500"/>
+  <img src="public/assets/logo-tracktrash.png" alt="TrackTrash - Logística Reversa Inteligente" width="450"/>
   <br/><br/>
 </div>
 
