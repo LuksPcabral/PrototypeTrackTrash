@@ -133,3 +133,14 @@ Projeto desenvolvido para o **Hackathon de Sustentabilidade 2026**.
 
 *TrackTrash — Transformando e-waste em responsabilidade ESG* ♻️
 
+
+---
+
+## 🎤 Pitch Deck
+
+> **Apresentação oficial da equipe #338 para o Hackathon 2026**
+
+[![Pitch Deck](https://img.shields.io/badge/Pitch%20Deck-Ver%20Apresentação-059669?style=for-the-badge&logo=slides)](https://manus.im/share/file/99471a60-f13f-45b7-b593-f0b20a7fd61a)
+
+**[👉 Clique aqui para ver o Pitch Deck completo](https://manus.im/share/file/99471a60-f13f-45b7-b593-f0b20a7fd61a)**
+
