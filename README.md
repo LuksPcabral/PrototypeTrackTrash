@@ -125,9 +125,17 @@ npm run build
 
 ---
 
-## 👥 Equipe
+## 👥 Equipe — #338
 
 Projeto desenvolvido para o **Hackathon de Sustentabilidade 2026**.
+
+| Nome | Função | E-mail |
+|------|--------|--------|
+| Anna Beatriz Maya Lozi Melhorim | 🎨 Designer | annamaya@outlook.com |
+| Jasmyne Cristina Barbosa Rodrigues | 💼 Gestora de Negócios | jasmynerodrigues007@gmail.com |
+| Léo Matias Araújo | 💻 Desenvolvedor | leomatias@alu.ufc.br |
+| Lucas Ricardo Paulino Cabral | ⚡ Otimizador de Fluxo | lucaspaulinocabral@gmail.com |
+| Otto David de Santana Freitag | 🚀 Gestor de Negócios e Desenvolvedor | ottofreitag@uol.com.br |
 
 ---
 
@@ -143,4 +151,5 @@ Projeto desenvolvido para o **Hackathon de Sustentabilidade 2026**.
 [![Pitch Deck](https://img.shields.io/badge/Pitch%20Deck-Ver%20Apresentação-059669?style=for-the-badge&logo=slides)](https://manus.im/share/file/99471a60-f13f-45b7-b593-f0b20a7fd61a)
 
 **[👉 Clique aqui para ver o Pitch Deck completo](https://manus.im/share/file/99471a60-f13f-45b7-b593-f0b20a7fd61a)**
+
 
