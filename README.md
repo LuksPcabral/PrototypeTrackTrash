@@ -1,7 +1,8 @@
 ﻿<div align="center">
-  <img src="public/assets/logo-tracktrash.jpg" alt="TrackTrash - Logística Reversa Inteligente" width="500"/>
+  <img src="public/assets/logo-tracktrash.png" alt="TrackTrash - Logística Reversa Inteligente" width="500"/>
   <br/><br/>
 </div>
+
 # 🌿 TrackTrash — Plataforma B2B de Logística de Resíduos Eletrônicos
 
 > MVP desenvolvido para competição de Hackathon de Sustentabilidade
@@ -37,7 +38,7 @@ O **TrackTrash** é uma plataforma B2B SaaS de gestão e logística de resíduos
 
 ### Dual-Role Platform
 
-\\\
+```bash
 Login
   ├── Portal Lojista (B2B Client)
   │   ├── Dashboard (KPIs, métricas ESG)
@@ -51,7 +52,7 @@ Login
       ├── SAT-INTEL (Mapa Leaflet/OpenStreetMap)
       ├── Otimização de Rotas (IA)
       └── Gestão de Frota
-\\\
+```
 
 ---
 
@@ -69,7 +70,7 @@ Login
 
 ## 📁 Estrutura do Projeto
 
-\\\
+```bash
 PrototypeTrackTrash/
 ├── src/
 │   ├── components/
@@ -83,13 +84,13 @@ PrototypeTrackTrash/
 ├── tracktrash-deliverables.html    # Fluxograma + Wireframe + Protótipo
 ├── package.json
 └── vite.config.js
-\\\
+```
 
 ---
 
 ## 📐 Entregáveis de Design
 
-O arquivo **\	racktrash-deliverables.html\** contém os 3 entregáveis visuais do projeto:
+O arquivo **`racktrash-deliverables.html`** contém os 3 entregáveis visuais do projeto:
 
 - **Fluxograma** — Processos e tomadas de decisão para cada perfil
 - **Wireframe** — Diagramação de 5 telas principais (navegável)
@@ -101,16 +102,24 @@ Abra localmente no navegador para explorar.
 
 ## ⚡ Como Rodar Localmente
 
-\\\ash
-# Instalar dependências
+
+### Instalar dependências
+
+```bash
 npm install
+```
 
-# Rodar em modo de desenvolvimento
+### Rodar em modo de desenvolvimento
+
+```bash
 npm run dev
+```
 
-# Build para produção
+### Build para produção
+
+```bash
 npm run build
-\\\
+```
 
 ---
 
