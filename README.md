@@ -90,7 +90,7 @@ PrototypeTrackTrash/
 
 ## 📐 Entregáveis de Design
 
-O arquivo **`racktrash-deliverables.html`** contém os 3 entregáveis visuais do projeto:
+O arquivo **`tracktrash-deliverables.html`** contém os 3 entregáveis visuais do projeto:
 
 - **Fluxograma** — Processos e tomadas de decisão para cada perfil
 - **Wireframe** — Diagramação de 5 telas principais (navegável)
